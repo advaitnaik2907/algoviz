@@ -1,0 +1,640 @@
+/* =========================================================
+   ALGORITHM LEARNING PAGE
+   ========================================================= */
+
+.algorithm-learn-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(108, 99, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(108, 99, 255, 0.05),
+      transparent 28%
+    ),
+    #0b1020;
+
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.algorithm-learn-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 45px 40px 75px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.lesson-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 55px;
+
+  color: #68738b;
+  font-size: 13px;
+}
+
+.lesson-breadcrumb a {
+  color: #8f88ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.lesson-breadcrumb a:hover {
+  color: #ffffff;
+}
+
+.lesson-breadcrumb span:last-child {
+  color: #9ba5bd;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.lesson-hero {
+  max-width: 850px;
+  margin-bottom: 45px;
+}
+
+.lesson-category {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 12px;
+  margin-bottom: 18px;
+
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 999px;
+
+  background: rgba(108, 99, 255, 0.08);
+  color: #8f88ff;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.lesson-hero h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  font-weight: 800;
+}
+
+.lesson-overview {
+  max-width: 760px;
+  margin: 22px 0 0;
+
+  color: #9ba5bd;
+
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   COMPLEXITY
+   ========================================================= */
+
+.lesson-complexity {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+
+  margin-bottom: 80px;
+}
+
+.complexity-card {
+  min-height: 110px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 22px 25px;
+  box-sizing: border-box;
+
+  background: rgba(18, 25, 44, 0.88);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.complexity-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(108, 99, 255, 0.35);
+}
+
+.complexity-card span {
+  margin-bottom: 9px;
+
+  color: #66718a;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.complexity-card strong {
+  color: #ffffff;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.lesson-section {
+  margin-bottom: 75px;
+}
+
+.lesson-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lesson-section-heading > span {
+  flex-shrink: 0;
+
+  color: #6c63ff;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.lesson-section-heading h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 27px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
+
+.lesson-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lesson-step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  gap: 18px;
+
+  min-height: 72px;
+
+  padding: 15px 20px;
+  box-sizing: border-box;
+
+  background: rgba(18, 25, 44, 0.75);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.lesson-step:hover {
+  background: rgba(24, 31, 53, 0.95);
+  border-color: rgba(108, 99, 255, 0.25);
+  transform: translateX(3px);
+}
+
+.lesson-step-number {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: rgba(108, 99, 255, 0.1);
+
+  color: #8f88ff;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.lesson-step p {
+  margin: 0;
+
+  color: #b1b9cb;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   EXAMPLE
+   ========================================================= */
+
+.lesson-example {
+  display: grid;
+  grid-template-columns: 1fr 55px 1fr;
+  align-items: center;
+  gap: 15px;
+
+  padding: 25px;
+
+  background: rgba(18, 25, 44, 0.75);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+}
+
+.example-block {
+  min-height: 95px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 20px;
+
+  background: rgba(8, 13, 26, 0.65);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.example-block span {
+  color: #66718a;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.example-block code {
+  color: #dce1ef;
+
+  font-family: Consolas, "Courier New", monospace;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  word-break: break-word;
+}
+
+.example-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #6c63ff;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   KEY POINTS
+   ========================================================= */
+
+.lesson-key-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.key-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+
+  padding: 18px 20px;
+
+  background: rgba(18, 25, 44, 0.75);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 11px;
+}
+
+.key-point > span {
+  flex-shrink: 0;
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(108, 99, 255, 0.12);
+
+  color: #8f88ff;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.key-point p {
+  margin: 1px 0 0;
+
+  color: #aeb6c9;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   VISUALIZER CTA
+   ========================================================= */
+
+.lesson-cta {
+  min-height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-top: 15px;
+  padding: 35px 40px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(108, 99, 255, 0.12),
+      rgba(18, 25, 44, 0.9)
+    );
+}
+
+.lesson-cta-content {
+  max-width: 650px;
+}
+
+.lesson-cta-content > span {
+  color: #8f88ff;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.lesson-cta-content h2 {
+  margin: 9px 0 8px;
+
+  color: #ffffff;
+
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.lesson-cta-content p {
+  margin: 0;
+
+  color: #8c96ad;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.lesson-visualize-button {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-width: 185px;
+
+  padding: 14px 20px;
+
+  border-radius: 9px;
+
+  background: #6c63ff;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 25px rgba(108, 99, 255, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lesson-visualize-button:hover {
+  transform: translateY(-2px);
+
+  background: #786fff;
+
+  box-shadow:
+    0 12px 30px rgba(108, 99, 255, 0.3);
+}
+
+.lesson-visualize-button span:last-child {
+  font-size: 17px;
+
+  transition: transform 0.2s ease;
+}
+
+.lesson-visualize-button:hover span:last-child {
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   NOT FOUND
+   ========================================================= */
+
+.lesson-not-found {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  padding: 120px 40px;
+
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.lesson-not-found h1 {
+  margin: 0 0 15px;
+
+  color: #ffffff;
+
+  font-size: 42px;
+}
+
+.lesson-not-found p {
+  margin: 0 0 25px;
+
+  color: #8994ad;
+
+  font-size: 15px;
+}
+
+.lesson-not-found a {
+  display: inline-flex;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+
+  background: #6c63ff;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .algorithm-learn-content {
+    padding: 35px 25px 55px;
+  }
+
+  .lesson-breadcrumb {
+    margin-bottom: 40px;
+  }
+
+  .lesson-hero h1 {
+    font-size: 44px;
+  }
+
+  .lesson-complexity {
+    margin-bottom: 60px;
+  }
+
+  .lesson-key-points {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .lesson-visualize-button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .algorithm-learn-content {
+    padding: 30px 18px 45px;
+  }
+
+  .lesson-hero h1 {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .lesson-overview {
+    font-size: 14px;
+  }
+
+  .lesson-complexity {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-section-heading h2 {
+    font-size: 23px;
+  }
+
+  .lesson-step {
+    grid-template-columns: 40px 1fr;
+    gap: 13px;
+    padding: 14px;
+  }
+
+  .lesson-step-number {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lesson-example {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .example-arrow {
+    transform: rotate(90deg);
+  }
+
+  .lesson-cta {
+    padding: 28px 24px;
+  }
+
+  .lesson-cta-content h2 {
+    font-size: 23px;
+  }
+}

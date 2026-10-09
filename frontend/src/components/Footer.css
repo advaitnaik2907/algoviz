@@ -1,0 +1,157 @@
+/* =========================================================
+   SHARED FOOTER
+========================================================= */
+
+.site-footer {
+  width: 100%;
+
+  background: #080d1a;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #aeb6cc;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   FOOTER CONTENT
+========================================================= */
+
+.site-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 50px 40px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.site-footer-brand {
+  max-width: 360px;
+}
+
+.site-footer-logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: #ffffff;
+
+  margin-bottom: 12px;
+}
+
+.site-footer-logo span {
+  color: #6c63ff;
+}
+
+.site-footer-brand p {
+  margin: 0;
+
+  color: #8993aa;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   FOOTER LINKS
+========================================================= */
+
+.site-footer-links {
+  display: flex;
+  gap: 80px;
+}
+
+.site-footer-links > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.site-footer-links span {
+  margin-bottom: 6px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.site-footer-links a {
+  color: #8993aa;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  transition: color 0.2s ease;
+}
+
+.site-footer-links a:hover {
+  color: #ffffff;
+}
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.site-footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 18px 40px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-footer-bottom p {
+  margin: 0;
+
+  color: #68738b;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+  .site-footer-content {
+    padding: 40px 24px;
+
+    flex-direction: column;
+
+    gap: 35px;
+  }
+
+  .site-footer-links {
+    gap: 50px;
+  }
+
+  .site-footer-bottom {
+    padding: 18px 24px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 450px) {
+  .site-footer-links {
+    flex-direction: column;
+    gap: 25px;
+  }
+}

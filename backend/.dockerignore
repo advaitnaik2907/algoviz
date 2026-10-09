@@ -1,0 +1,11 @@
+target/
+bin/
+.git/
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+.env
+.env.*
+HELP.md

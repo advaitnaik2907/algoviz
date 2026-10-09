@@ -1,0 +1,21 @@
+# Environment files (NEVER commit)
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+dist/
+target/
+bin/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local tooling (not part of the app)
+postman/
+.postman/
+.github/modernize/

@@ -1,0 +1,616 @@
+/* =========================================================
+   ALGOVIZ - LEARN PAGE
+========================================================= */
+
+.learn-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(108, 99, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(108, 99, 255, 0.05),
+      transparent 28%
+    ),
+    #0b1020;
+
+  color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.learn-content {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 75px 40px 70px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.learn-hero {
+  max-width: 800px;
+
+  margin: 0 auto 90px;
+
+  text-align: center;
+}
+
+.learn-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  padding: 7px 13px;
+
+  border: 1px solid rgba(108, 99, 255, 0.35);
+  border-radius: 999px;
+
+  background: rgba(108, 99, 255, 0.08);
+
+  color: #8f88ff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+}
+
+.learn-hero h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(42px, 5vw, 64px);
+
+  line-height: 1.08;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+}
+
+.learn-hero h1 span {
+  color: #756cff;
+}
+
+.learn-hero p {
+  max-width: 650px;
+
+  margin: 25px auto 0;
+
+  color: #9ba5bd;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   ALGORITHM SECTIONS
+========================================================= */
+
+.learn-algorithm-section {
+  margin-bottom: 80px;
+}
+
+.algorithm-section-header {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-bottom: 28px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.algorithm-section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  min-width: 0;
+}
+
+.section-number {
+  flex-shrink: 0;
+
+  color: #6c63ff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.algorithm-section-title h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 28px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.algorithm-section-header > p {
+  max-width: 330px;
+
+  margin: 0;
+
+  color: #7f8aa3;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   ALGORITHM GRID
+========================================================= */
+
+.learning-algorithm-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   ALGORITHM CARD
+========================================================= */
+
+.learning-algorithm-card {
+  min-height: 245px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  background: rgba(18, 25, 44, 0.88);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 16px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.learning-algorithm-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #6c63ff,
+    transparent
+  );
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.learning-algorithm-card:hover {
+  transform: translateY(-5px);
+
+  background: rgba(24, 31, 53, 0.98);
+
+  border-color: rgba(108, 99, 255, 0.4);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(108, 99, 255, 0.06);
+}
+
+.learning-algorithm-card:hover::before {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.algorithm-card-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.algorithm-category {
+  display: inline-flex;
+
+  align-items: center;
+
+  min-height: 25px;
+
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  background: rgba(108, 99, 255, 0.1);
+
+  color: #8f88ff;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.algorithm-arrow {
+  color: #66718a;
+
+  font-size: 20px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.learning-algorithm-card:hover .algorithm-arrow {
+  color: #8f88ff;
+
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.learning-algorithm-card h3 {
+  margin: 0 0 10px;
+
+  color: #ffffff;
+
+  font-size: 20px;
+
+  line-height: 1.3;
+
+  font-weight: 700;
+}
+
+.algorithm-description {
+  margin: 0;
+
+  color: #8994ad;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+
+  flex: 1;
+}
+
+
+/* =========================================================
+   COMPLEXITY
+========================================================= */
+
+.algorithm-complexity {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 25px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.algorithm-complexity > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.algorithm-complexity span {
+  color: #66718a;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+.algorithm-complexity strong {
+  color: #dce1ef;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+
+.learning-bottom-cta {
+  min-height: 190px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-top: 10px;
+
+  padding: 35px 40px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(108, 99, 255, 0.2);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(108, 99, 255, 0.12),
+      rgba(18, 25, 44, 0.9)
+    );
+}
+
+.learning-cta-content {
+  max-width: 650px;
+}
+
+.learning-cta-content > span {
+  color: #8f88ff;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.learning-cta-content h2 {
+  margin: 9px 0 8px;
+
+  color: #ffffff;
+
+  font-size: 27px;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.5px;
+}
+
+.learning-cta-content p {
+  margin: 0;
+
+  color: #8c96ad;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+.lesson-visualize-button {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  min-width: 175px;
+
+  padding: 14px 20px;
+
+  border-radius: 9px;
+
+  background: #6c63ff;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 25px rgba(108, 99, 255, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lesson-visualize-button:hover {
+  transform: translateY(-2px);
+
+  background: #786fff;
+
+  box-shadow:
+    0 12px 30px rgba(108, 99, 255, 0.3);
+}
+
+.lesson-visualize-button span {
+  font-size: 17px;
+
+  transition: transform 0.2s ease;
+}
+
+.lesson-visualize-button:hover span {
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .learning-algorithm-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .learn-content {
+    padding: 55px 25px 55px;
+  }
+
+  .learn-hero {
+    margin-bottom: 65px;
+  }
+
+  .learn-hero h1 {
+    font-size: 44px;
+  }
+
+  .algorithm-section-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .algorithm-section-header > p {
+    max-width: 500px;
+
+    text-align: left;
+  }
+
+  .learning-bottom-cta {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .lesson-visualize-button {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .learn-content {
+    padding: 45px 18px 45px;
+  }
+
+  .learn-hero h1 {
+    font-size: 36px;
+
+    letter-spacing: -1px;
+  }
+
+  .learn-hero p {
+    font-size: 14px;
+  }
+
+  .learning-algorithm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .algorithm-section-title h2 {
+    font-size: 23px;
+  }
+
+  .learning-algorithm-card {
+    min-height: 225px;
+  }
+
+  .learning-bottom-cta {
+    padding: 28px 24px;
+  }
+
+  .learning-cta-content h2 {
+    font-size: 23px;
+  }
+
+}

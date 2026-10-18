@@ -1,11 +1,18 @@
+
 function AnimationStatus({
+  algorithmId,
   step,
   currentStep,
   totalSteps,
   isRunning,
   array,
 }) {
-  if (!step) {
+  const isSearching =
+    algorithmId === "linearSearch" ||
+    algorithmId === "binarySearch";
+
+  // Initial idle state
+  if (totalSteps === 0) {
     return (
       <div className="animation-status idle">
         <span className="status-message">
@@ -19,196 +26,138 @@ function AnimationStatus({
     );
   }
 
+  // Animation completed
+  if (
+    !isRunning &&
+    totalSteps > 0 &&
+    currentStep >= totalSteps
+  ) {
+    const lastStep = step;
+
+    let completionMessage = "Sorting completed!";
+    let completionClass = "sorted";
+
+    if (isSearching) {
+      if (lastStep?.type === "found") {
+        completionMessage = `Target ${lastStep.target} found at index ${lastStep.index}!`;
+        completionClass = "found";
+      } else if (lastStep?.type === "notFound") {
+        completionMessage = `Target ${lastStep.target} not found!`;
+        completionClass = "not-found";
+      } else {
+        completionMessage = "Search completed!";
+        completionClass = "processing";
+      }
+    }
+
+    return (
+      <div className={`animation-status ${completionClass}`}>
+        <div className="status-left">
+          <span className="status-indicator"></span>
+
+          <span className="status-message">
+            {completionMessage}
+          </span>
+        </div>
+
+        <span className="step-counter">
+          Step {totalSteps} / {totalSteps}
+        </span>
+      </div>
+    );
+  }
+
+  // Prevent errors when no step is available
+  if (!step) {
+    return (
+      <div className="animation-status idle">
+        <span className="status-message">
+          Ready to visualize
+        </span>
+
+        <span className="step-counter">
+          Step 0 / {totalSteps}
+        </span>
+      </div>
+    );
+  }
+
   let message = "Processing...";
   let statusClass = "processing";
 
-  // =========================
-  // COMPARE
-  // =========================
-
+  // Compare operation
   if (step.type === "compare") {
+    message = isSearching
+      ? `Checking element at index ${step.indices?.[0]} for target ${step.target}`
+      : `Comparing elements at indices ${step.indices?.join(" and ")}`;
+
     statusClass = "compare";
-
-    if (step.indices?.length >= 2) {
-      const firstValue = array[step.indices[0]];
-      const secondValue = array[step.indices[1]];
-
-      message = `Comparing ${firstValue} and ${secondValue}`;
-    } else if (step.indices?.length === 1) {
-      const value = array[step.indices[0]];
-
-      message = `Checking value ${value}`;
-    }
   }
 
-  // =========================
-  // SWAP
-  // =========================
-
-  if (step.type === "swap") {
+  // Swap operation
+  else if (step.type === "swap") {
+    message = `Swapping elements at indices ${step.indices?.join(" and ")}`;
     statusClass = "swap";
-
-    if (step.indices?.length >= 2) {
-      const firstValue = step.array
-        ? step.array[step.indices[1]]
-        : array[step.indices[0]];
-
-      const secondValue = step.array
-        ? step.array[step.indices[0]]
-        : array[step.indices[1]];
-
-      message = `Swapping ${firstValue} ↔ ${secondValue}`;
-    } else {
-      message = "Swapping elements";
-    }
   }
 
-  // =========================
-  // OVERWRITE
-  // =========================
-
-  if (step.type === "overwrite") {
-    statusClass = "swap";
-
-    const value = step.array?.[step.index];
-
-    if (value !== undefined) {
-      message = `Placing ${value} at position ${step.index + 1}`;
-    } else {
-      message = "Updating element";
-    }
+  // Overwrite operation
+  else if (step.type === "overwrite") {
+    message = `Updating element at index ${step.index}`;
+    statusClass = "overwrite";
   }
 
-  // =========================
-  // MINIMUM
-  // =========================
-
-  if (step.type === "minimum") {
+  // Minimum operation
+  else if (step.type === "minimum") {
+    message = `New minimum found at index ${step.index}`;
     statusClass = "minimum";
-
-    const value = array[step.index];
-
-    if (value !== undefined) {
-      message = `New minimum: ${value}`;
-    } else {
-      message = "New minimum found";
-    }
   }
 
-  // =========================
-  // PIVOT
-  // =========================
-
-  if (step.type === "pivot") {
+  // Pivot operation
+  else if (step.type === "pivot") {
+    message = `Pivot selected at index ${step.index}`;
     statusClass = "pivot";
-
-    const value = array[step.index];
-
-    if (value !== undefined) {
-      message = `Pivot selected: ${value}`;
-    } else {
-      message = "Pivot selected";
-    }
   }
 
-  // =========================
-  // SORTED
-  // =========================
-
-  if (step.type === "sorted") {
+  // Sorted element
+  else if (step.type === "sorted") {
+    message = `Element at index ${step.index} is sorted`;
     statusClass = "sorted";
-
-    const value = array[step.index];
-
-    if (value !== undefined) {
-      message = `${value} placed in sorted position`;
-    } else {
-      message = "Element placed in sorted position";
-    }
   }
 
-  // =========================
-  // SORTED RANGE
-  // =========================
-
-  if (step.type === "sortedRange") {
+  // Sorted range
+  else if (step.type === "sortedRange") {
+    message = "A range of elements is sorted";
     statusClass = "sorted";
-
-    const startValue = array[step.start];
-    const endValue = array[step.end];
-
-    if (
-      startValue !== undefined &&
-      endValue !== undefined
-    ) {
-      message = `Sorted section: ${startValue} → ${endValue}`;
-    } else {
-      message = "Sorted section completed";
-    }
   }
 
-  // =========================
-  // FOUND
-  // =========================
-
-  if (step.type === "found") {
+  // Search found
+  else if (step.type === "found") {
+    message = `Target ${step.target} found at index ${step.index}!`;
     statusClass = "found";
-
-    const value = array[step.index];
-
-    if (value !== undefined) {
-      message = `Target ${value} found at position ${
-        step.index + 1
-      }`;
-    } else {
-      message = "Target found!";
-    }
   }
 
-  // =========================
-  // NOT FOUND
-  // =========================
-
-  if (step.type === "notFound") {
+  // Search not found
+  else if (step.type === "notFound") {
+    message = `Target ${step.target} not found`;
     statusClass = "not-found";
-
-    message = `Target ${step.target} was not found`;
   }
 
-  // =========================
-  // BINARY SEARCH RANGE
-  // =========================
-
-  if (step.type === "range") {
-    statusClass = "search";
-
-    const middleValue = array[step.middle];
-
-    if (middleValue !== undefined) {
-      message = `Checking middle value: ${middleValue}`;
-    } else {
-      message = "Searching within current range";
-    }
+  // Binary search: current range
+  else if (step.type === "range") {
+    message = `Searching indices ${step.left} to ${step.right}; checking middle index ${step.middle}`;
+    statusClass = "processing";
   }
 
-  // =========================
-  // SEARCH LEFT
-  // =========================
-
-  if (step.type === "searchLeft") {
-    statusClass = "search";
-
-    message = "Target is in the left half";
+  // Binary search: search left
+  else if (step.type === "searchLeft") {
+    message = "Target is smaller; searching the left half";
+    statusClass = "compare";
   }
 
-  // =========================
-  // SEARCH RIGHT
-  // =========================
-
-  if (step.type === "searchRight") {
-    statusClass = "search";
-
-    message = "Target is in the right half";
+  // Binary search: search right
+  else if (step.type === "searchRight") {
+    message = "Target is larger; searching the right half";
+    statusClass = "compare";
   }
 
   return (
@@ -222,8 +171,7 @@ function AnimationStatus({
       </div>
 
       <span className="step-counter">
-        Step {Math.min(currentStep + 1, totalSteps)} /{" "}
-        {totalSteps}
+        Step {Math.min(currentStep + 1, totalSteps)} / {totalSteps}
       </span>
     </div>
   );

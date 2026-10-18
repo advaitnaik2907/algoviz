@@ -46,7 +46,7 @@ function Footer() {
 
       <div className="site-footer-bottom">
         <p>
-          © 2026 AlgoViz. Built for learning algorithms.
+          © 2026 AlgoViz. Built for learning algorithms. <br/>Advait Naik
         </p>
 
         <p>

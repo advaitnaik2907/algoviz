@@ -96,13 +96,54 @@ a:focus-visible {
    VISUALIZER SIDEBAR
 ========================================================= */
 
+
 .sidebar {
+  position: relative;
   width: 240px;
+  min-width: 240px;
   padding: 25px 18px;
   background: #111827;
   border-right: 1px solid #1e293b;
   flex-shrink: 0;
+  overflow: hidden;
+  transition:
+    width 0.3s ease,
+    min-width 0.3s ease,
+    padding 0.3s ease;
 }
+
+.sidebar.sidebar-collapsed {
+  width: 56px;
+  min-width: 56px;
+  padding: 60px 8px 20px;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  color: #f8fafc;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.sidebar-toggle:hover {
+  background: #334155;
+}
+
+.sidebar-collapsed .sidebar-toggle {
+  right: 11px;
+}
+
 
 .sidebar h2 {
   font-size: 20px;
@@ -1912,12 +1953,23 @@ a:focus-visible {
     flex-direction: column;
   }
 
-  .sidebar {
-    width: 100%;
+  
+.sidebar {
+  width: 100%;
+  min-width: 0;
+  padding: 25px 18px;
+  border-right: none;
+  border-bottom: 1px solid #1e293b;
+}
 
-    border-right: none;
-    border-bottom: 1px solid #1e293b;
-  }
+.sidebar.sidebar-collapsed {
+  width: 100%;
+  min-width: 0;
+  min-height: 56px;
+  padding: 60px 18px 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
 
   .algorithm-section {
     display: inline-block;
@@ -2188,4 +2240,283 @@ a:focus-visible {
   .hero-content h1 {
     font-size: 36px;
   }
+}
+
+
+/* Animation and code editor layout */
+.visualizer-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.visualizer-workspace .visualizer-area {
+  min-width: 0;
+  height: 480px;
+  padding: 20px;
+  background: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+}
+
+/* VS Code-inspired editor */
+.code-panel {
+  min-width: 0;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #1e1e1e;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  color: #d4d4d4;
+  font-family: Consolas, "Courier New", monospace;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* Editor title bar */
+.editor-titlebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  background: #181818;
+  border-bottom: 1px solid #2b2b2b;
+}
+
+.editor-window-dots {
+  position: absolute;
+  left: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.editor-window-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: #ff5f57;
+}
+
+.dot-yellow {
+  background: #febc2e;
+}
+
+.dot-green {
+  background: #28c840;
+}
+
+.editor-title {
+  color: #a1a1aa;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+}
+
+/* File tab */
+.editor-tab {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 36px;
+  padding: 0 14px;
+  background: #1e1e1e;
+  border-bottom: 1px solid #007acc;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #e5e7eb;
+}
+
+.javascript-icon {
+  color: #f1d85a;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.editor-tab-close {
+  margin-left: auto;
+  color: #858585;
+  font-size: 17px;
+}
+
+/* File path */
+.editor-breadcrumb {
+  flex: 0 0 29px;
+  padding: 7px 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: #1e1e1e;
+  color: #858585;
+  border-bottom: 1px solid #2b2b2b;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+}
+
+/* Code area */
+.code-content {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 6px 0;
+  overflow: auto;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+.code-line {
+  display: flex;
+  min-height: 19px;
+  padding-right: 12px;
+  white-space: pre;
+  border-left: 2px solid transparent;
+}
+
+.code-line code {
+  white-space: pre;
+  font-family: inherit;
+}
+
+.line-number {
+  flex: 0 0 42px;
+  padding-right: 12px;
+  color: #858585;
+  text-align: right;
+  user-select: none;
+  border-right: 1px solid #333333;
+  margin-right: 12px;
+}
+
+.code-line code {
+  color: #d4d4d4;
+  font-family: inherit;
+}
+
+/* Active animation line */
+.active-code-line {
+  background: #264f78;
+  border-left-color: #007acc;
+}
+
+.active-code-line .line-number {
+  color: #ffffff;
+  border-right-color: #3b6388;
+}
+
+.active-code-line code {
+  color: #ffffff;
+}
+
+/* JavaScript syntax colors */
+.syntax-keyword {
+  color: #569cd6;
+}
+
+.syntax-string {
+  color: #ce9178;
+}
+
+.syntax-number {
+  color: #b5cea8;
+}
+
+.syntax-value {
+  color: #569cd6;
+}
+
+/* Unsupported algorithm message */
+.editor-message {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #858585;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Bottom status bar */
+.editor-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 0 0 25px;
+  padding: 0 10px;
+  background: #007acc;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+}
+
+/* Responsive layout */
+@media (max-width: 1100px) {
+  .visualizer-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .visualizer-workspace .visualizer-area,
+  .visualizer-workspace .code-panel {
+    height: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+  .visualizer-workspace {
+    gap: 14px;
+  }
+
+  .visualizer-workspace .visualizer-area,
+  .visualizer-workspace .code-panel {
+    height: 380px;
+  }
+
+  .code-content {
+    font-size: 11px;
+  }
+
+  .line-number {
+    flex-basis: 32px;
+    margin-right: 8px;
+  }
+}
+
+/* Dark scrollbar for the algorithm code editor */
+.code-content {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #1e1e1e;
+}
+
+.code-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.code-content::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.code-content::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 8px;
+  border: 2px solid #1e1e1e;
+}
+
+.code-content::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+.code-content::-webkit-scrollbar-corner {
+  background: #1e1e1e;
 }

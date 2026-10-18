@@ -1,4 +1,9 @@
+
+import { useState } from "react";
+
 function Sidebar({ selectedAlgorithm, onSelectAlgorithm }) {
+  const [collapsed, setCollapsed] = useState(false);
+
   const sortingAlgorithms = [
     { id: "bubbleSort", name: "Bubble Sort" },
     { id: "selectionSort", name: "Selection Sort" },
@@ -14,40 +19,54 @@ function Sidebar({ selectedAlgorithm, onSelectAlgorithm }) {
   ];
 
   return (
-    <aside className="sidebar">
-      <h2>Algorithms</h2>
+    <aside className={`sidebar ${collapsed ? "sidebar-collapsed" : ""}`}>
+      <button
+        type="button"
+        className="sidebar-toggle"
+        onClick={() => setCollapsed(!collapsed)}
+        aria-label={collapsed ? "Expand algorithms sidebar" : "Collapse algorithms sidebar"}
+        title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+      >
+        {collapsed ? "☰" : "←"}
+      </button>
 
-      <div className="algorithm-section">
-        <h3>Sorting</h3>
+      {!collapsed && (
+        <>
+          <h2>Algorithms</h2>
 
-        {sortingAlgorithms.map((algorithm) => (
-          <button
-            key={algorithm.id}
-            className={`algorithm-button ${
-              selectedAlgorithm === algorithm.id ? "selected" : ""
-            }`}
-            onClick={() => onSelectAlgorithm(algorithm.id)}
-          >
-            {algorithm.name}
-          </button>
-        ))}
-      </div>
+          <div className="algorithm-section">
+            <h3>Sorting</h3>
 
-      <div className="algorithm-section">
-        <h3>Searching</h3>
+            {sortingAlgorithms.map((algorithm) => (
+              <button
+                key={algorithm.id}
+                className={`algorithm-button ${
+                  selectedAlgorithm === algorithm.id ? "selected" : ""
+                }`}
+                onClick={() => onSelectAlgorithm(algorithm.id)}
+              >
+                {algorithm.name}
+              </button>
+            ))}
+          </div>
 
-        {searchingAlgorithms.map((algorithm) => (
-          <button
-            key={algorithm.id}
-            className={`algorithm-button ${
-              selectedAlgorithm === algorithm.id ? "selected" : ""
-            }`}
-            onClick={() => onSelectAlgorithm(algorithm.id)}
-          >
-            {algorithm.name}
-          </button>
-        ))}
-      </div>
+          <div className="algorithm-section">
+            <h3>Searching</h3>
+
+            {searchingAlgorithms.map((algorithm) => (
+              <button
+                key={algorithm.id}
+                className={`algorithm-button ${
+                  selectedAlgorithm === algorithm.id ? "selected" : ""
+                }`}
+                onClick={() => onSelectAlgorithm(algorithm.id)}
+              >
+                {algorithm.name}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </aside>
   );
 }

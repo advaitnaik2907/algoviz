@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CodePanel from "./components/CodePanel";
 import {
   BrowserRouter,
   Routes,
@@ -258,16 +259,8 @@ function VisualizerPage() {
     // ANIMATION COMPLETE
     // =========================
 
-    if (currentStep >= steps.length) {
-
+if (currentStep >= steps.length) {
       setIsRunning(false);
-
-      setActiveIndices([]);
-
-      setPivotIndex(null);
-
-      setMinimumIndex(null);
-
       return;
     }
 
@@ -666,72 +659,45 @@ function VisualizerPage() {
 
           {/* ARRAY VISUALIZATION */}
 
-          <div className="visualizer-area">
+          
+<div className="visualizer-workspace">
 
-            <ArrayBars
-              array={array}
+  <div className="visualizer-area">
+    <ArrayBars
+      array={array}
+      activeIndices={activeIndices}
+      sortedIndices={sortedIndices}
+      pivotIndex={pivotIndex}
+      foundIndex={foundIndex}
+      minimumIndex={minimumIndex}
+      searchRange={searchRange}
+      searchMiddle={searchMiddle}
+      searchLeft={searchLeft}
+      searchRight={searchRight}
+    />
+  </div>
 
-              activeIndices={
-                activeIndices
-              }
+  <CodePanel
+    algorithmId={selectedAlgorithm}
+    step={currentStep > 0 ? steps[currentStep - 1] : null}
+  />
 
-              sortedIndices={
-                sortedIndices
-              }
-
-              pivotIndex={
-                pivotIndex
-              }
-
-              foundIndex={
-                foundIndex
-              }
-
-              minimumIndex={
-                minimumIndex
-              }
-
-              searchRange={
-                searchRange
-              }
-
-              searchMiddle={
-                searchMiddle
-              }
-
-              searchLeft={
-                searchLeft
-              }
-
-              searchRight={
-                searchRight
-              }
-            />
-
-          </div>
-
+</div>
           {/* ANIMATION STATUS */}
 
           <AnimationStatus
+          algorithmId={selectedAlgorithm}
             step={
-              steps[currentStep]
+              steps.length === 0
+                ? null
+                : currentStep >= steps.length
+                  ? steps[steps.length - 1]
+                  : steps[currentStep]
             }
-
-            currentStep={
-              currentStep
-            }
-
-            totalSteps={
-              steps.length
-            }
-
-            isRunning={
-              isRunning
-            }
-
-            array={
-              array
-            }
+            currentStep={currentStep}
+            totalSteps={steps.length}
+            isRunning={isRunning}
+            array={array}
           />
 
           {/* CONTROLS */}
@@ -903,14 +869,14 @@ function App() {
         ================================================= */}
 
         <Route
-          path="/quiz/:algorithm"
-          element={
-            <ProtectedRoute>
-              <AppLayout>
-                <Quiz />
-              </AppLayout>
-            </ProtectedRoute>
-          }
+        path="/quiz/:algorithm"
+        element={
+        <ProtectedRoute>
+        <AppLayout>
+        <Quiz key={window.location.pathname} />
+        </AppLayout>
+      </ProtectedRoute>
+        }
         />
 
         <Route

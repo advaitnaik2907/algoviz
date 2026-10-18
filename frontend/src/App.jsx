@@ -795,7 +795,7 @@ function AppLayout({ children }) {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/algoviz">
 
       <Routes>
 

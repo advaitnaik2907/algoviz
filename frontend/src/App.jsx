@@ -795,7 +795,7 @@ function AppLayout({ children }) {
 
 function App() {
   return (
-    <BrowserRouter basename="/algoviz">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
 
       <Routes>
 

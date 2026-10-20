@@ -37,6 +37,8 @@ jobs:
 
       - name: Build React application
         working-directory: frontend
+        env:
+          GITHUB_PAGES: "true"
         run: npm run build
 
       - name: Upload production build
